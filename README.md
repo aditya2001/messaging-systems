@@ -30,11 +30,19 @@ Outbound Kafka topics are where consumers subscribe to the topic receive the mes
 #### Kafka broker - 
 Each server running in the kafka cluster is known as broker. Broker server as connection points for both producers and consumers.
 
+The brokers are independent systems, with their commit log file storage. They receive messages and store them.
+
 
 #### Partitions -
-Topics are divided into partitions. Partitions start from 0 and continue in increasing numbers.
-In Topic a single partition can be created or thousands of partitions be created depending on the scenario.
+Topics are subdivided into partitions. Partitions start from 0 and continue in increasing numbers.
+In Topic a single partition can be created or thousands of partitions be created depending on the scenario. A topic is subdivided into partitions. It does this so messages in one partition can be processed in parallel with other partitions, increasing the throughput.
+
 Thanks to replica in kafka, each partition of the topics is stored in more than one server. One of these server is the leader and other are copies.
+
+![alt text](image.png)
+
+#### Offset number
+When a message is received by a partiton, it is given a offset number for that topic partiton combination.
 
 #### Event in stream processing -
 An event is a record of something that happened that also provides information about what happened.
